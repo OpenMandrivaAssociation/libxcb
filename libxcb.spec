@@ -2,7 +2,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.0
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -14,9 +14,6 @@ BuildRequires: x11-util-macros >= 1.0.1
 BuildRequires: libpthread-stubs
 BuildRequires: libxslt-proc
 BuildRequires: libxdmcp-devel
-# gw this isn't picked up by the automatic pkgconfig deps, but without it,
-# pkg-config --libs xcb will fail
-Requires: libpthread-stubs
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -43,6 +40,10 @@ Group: Development/X11
 Requires: x11-proto-devel >= 1.2.0
 Provides: libxcb-devel = %{version}-%{release}
 Requires: %{libxcb} = %{version}
+# gw this isn't picked up by the automatic pkgconfig deps, but without it,
+# pkg-config --libs xcb will fail
+Requires: libpthread-stubs
+
 
 %description -n %{libxcb}-devel
 Development files for %{name}
