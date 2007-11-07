@@ -1,15 +1,17 @@
 %define libxcb %mklibname xcb 1
 Name: libxcb
 Summary: X protocol C-language Binding Library
-Version: 1.0
-Release: %mkrel 3
+Version: 1.1
+Release: %mkrel 1
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
 Source0: http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-root
 
-BuildRequires: x11-proto-devel >= 1.2.0
+# because of xcb-proto-1.1 (at least)
+BuildRequires: x11-proto-devel >= 7.3-2mdv
+
 BuildRequires: x11-util-macros >= 1.0.1
 BuildRequires: libpthread-stubs
 BuildRequires: libxslt-proc
@@ -138,5 +140,4 @@ rm -rf %{buildroot}
 %{_libdir}/libxcb-xvmc.so.0.0.0
 %{_libdir}/libxcb.so.1
 %{_libdir}/libxcb.so.1.0.0
-
 
