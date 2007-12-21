@@ -7,6 +7,7 @@ Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
 Source0: http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-root
 
 # because of xcb-proto-1.1 (at least)
 BuildRequires: x11-proto-devel >= 7.3-2mdv
