@@ -2,11 +2,12 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.1
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
 Source0: http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
+Patch0: libxcb-1.1-sloppy-lock-on-by-default.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
 # because of xcb-proto-1.1 (at least)
@@ -77,10 +78,10 @@ Static development files for %{name}
 
 %prep
 %setup -q -n libxcb-%{version}
+%patch0 -p0 -b .sloppy
 
 %build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
+%configure
 
 %make
 
