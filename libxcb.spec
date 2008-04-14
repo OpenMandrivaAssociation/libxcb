@@ -2,7 +2,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.1
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -41,6 +41,7 @@ threading support, and extensibility.
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: x11-proto-devel >= 1.2.0
+Provides: xcb-devel = %{version}-%{release}
 Provides: libxcb-devel = %{version}-%{release}
 Requires: %{libxcb} = %{version}
 # gw this isn't picked up by the automatic pkgconfig deps, but without it,
