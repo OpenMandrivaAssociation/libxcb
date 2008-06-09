@@ -93,8 +93,12 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
+%if %mdkversion < 200900
 %post -n %{libxcb} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libxcb} -p /sbin/ldconfig
+%endif
 
 %files -n %{libxcb}
 %defattr(-,root,root)
