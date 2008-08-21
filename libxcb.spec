@@ -1,8 +1,11 @@
 %define libxcb %mklibname xcb 1
+%define libdev %mklibname xcb -d
+%define libdevst %mklibname xcb -d -s
+
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.1
-Release: %mkrel 4
+Release: %mkrel 5
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -37,22 +40,22 @@ threading support, and extensibility.
 
 #-----------------------------------------------------------
 
-%package -n %{libxcb}-devel
+%package -n %{libdev}
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: x11-proto-devel >= 1.2.0
 Provides: xcb-devel = %{version}-%{release}
-Provides: libxcb-devel = %{version}-%{release}
+Obsoletes: %{libxcb}-devel
 Requires: %{libxcb} = %{version}
 # gw this isn't picked up by the automatic pkgconfig deps, but without it,
 # pkg-config --libs xcb will fail
 Requires: libpthread-stubs
 
 
-%description -n %{libxcb}-devel
+%description -n %{libdev}
 Development files for %{name}
 
-%files -n %{libxcb}-devel
+%files -n %{libdev}
 %defattr(-,root,root)
 %{_includedir}/xcb/*.h
 %{_libdir}/libxcb*.la
@@ -62,16 +65,16 @@ Development files for %{name}
 
 #-----------------------------------------------------------
 
-%package -n %{libxcb}-static-devel
+%package -n %{libdevst}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxcb}-devel = %{version}
-Provides: libxcb-static-devel = %{version}-%{release}
+Requires: %{libdev} = %{version}
+Obsoletes: %{libxcb}-static-devel
 
-%description -n %{libxcb}-static-devel
+%description -n %{libdevst}
 Static development files for %{name}
 
-%files -n %{libxcb}-static-devel
+%files -n %{libdevst}
 %defattr(-,root,root)
 %{_libdir}/libxcb*.a
 
