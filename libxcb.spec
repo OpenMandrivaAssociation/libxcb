@@ -21,6 +21,7 @@ BuildRequires: libpthread-stubs
 BuildRequires: libxslt-proc
 BuildRequires: libxdmcp-devel
 BuildRequires: doxygen
+BuildRequires: python-celementtree
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
