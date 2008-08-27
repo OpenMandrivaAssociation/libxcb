@@ -20,6 +20,7 @@ BuildRequires: x11-util-macros >= 1.0.1
 BuildRequires: libpthread-stubs
 BuildRequires: libxslt-proc
 BuildRequires: libxdmcp-devel
+BuildRequires: doxygen
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
