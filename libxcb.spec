@@ -5,7 +5,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.1.91
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -72,6 +72,7 @@ Summary: Static development files for %{name}
 Group: Development/X11
 Requires: %{libdev} = %{version}
 Obsoletes: %{libxcb}-static-devel
+Provides: libxcb-static-devel = %version-%release
 
 %description -n %{libdevst}
 Static development files for %{name}
