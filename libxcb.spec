@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.3
-Release: %mkrel 3
+Release: %mkrel 4
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -97,6 +97,7 @@ Requires: %{libxcb_dpms} = %{version}
 Requires: %{libxcb_glx} = %{version}
 Requires: %{libxcb_randr} = %{version}
 Requires: %{libxcb_record} = %{version}
+Requires: %{libxcb_render} = %{version}
 Requires: %{libxcb_res} = %{version}
 Requires: %{libxcb_screensaver} = %{version}
 Requires: %{libxcb_shape} = %{version}
