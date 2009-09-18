@@ -17,6 +17,7 @@ BuildRequires: libxslt-proc
 BuildRequires: libxdmcp-devel
 BuildRequires: doxygen
 BuildRequires: python-celementtree
+BuildRequires: graphviz
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -32,7 +33,7 @@ threading support, and extensibility.
 %define damagemajor 0
 %define dpmsmajor 0
 %define glxmajor 0
-%define randrmajor 1
+%define randrmajor 0
 %define recordmajor 0
 %define rendermajor 0
 %define resmajor 0
