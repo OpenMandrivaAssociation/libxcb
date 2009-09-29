@@ -579,8 +579,7 @@ This package provides bindings for the xvmc extension.
 %setup -q
 
 %build
-autoreconf
-%configure
+%configure2_5x
 
 %make
 
