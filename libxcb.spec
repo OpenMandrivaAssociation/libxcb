@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.4
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -158,7 +158,6 @@ Static development files for %{name}
 Summary: X protocol C-language Binding Library (composite extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -179,7 +178,6 @@ This package provides bindings for the composite extension.
 Summary: X protocol C-language Binding Library (damage extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -200,7 +198,6 @@ This package provides bindings for the damage extension.
 Summary: X protocol C-language Binding Library (dpms extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -221,7 +218,6 @@ This package provides bindings for the dpms extension.
 Summary: X protocol C-language Binding Library (glx extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -242,7 +238,6 @@ This package provides bindings for the glx extension.
 Summary: X protocol C-language Binding Library (randr extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -263,7 +258,6 @@ This package provides bindings for the randr extension.
 Summary: X protocol C-language Binding Library (record extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -284,7 +278,6 @@ This package provides bindings for the record extension.
 Summary: X protocol C-language Binding Library (render extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -305,7 +298,6 @@ This package provides bindings for the render extension.
 Summary: X protocol C-language Binding Library (res extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -326,7 +318,6 @@ This package provides bindings for the res extension.
 Summary: X protocol C-language Binding Library (screensaver extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -347,7 +338,6 @@ This package provides bindings for the screensaver extension.
 Summary: X protocol C-language Binding Library (shape extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -368,7 +358,6 @@ This package provides bindings for the shape extension.
 Summary: X protocol C-language Binding Library (shm extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -389,7 +378,6 @@ This package provides bindings for the shm extension.
 Summary: X protocol C-language Binding Library (sync extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -410,7 +398,6 @@ This package provides bindings for the sync extension.
 Summary: X protocol C-language Binding Library (xevie extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -431,7 +418,6 @@ This package provides bindings for the xevie extension.
 Summary: X protocol C-language Binding Library (xf86dri extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -452,7 +438,6 @@ This package provides bindings for the xf86dri extension.
 Summary: X protocol C-language Binding Library (xfixes extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -473,7 +458,6 @@ This package provides bindings for the xfixes extension.
 Summary: X protocol C-language Binding Library (xinerama extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -494,7 +478,6 @@ This package provides bindings for the xinerama extension.
 Summary: X protocol C-language Binding Library (xprint extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -515,7 +498,6 @@ This package provides bindings for the xprint extension.
 Summary: X protocol C-language Binding Library (xtest extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -536,7 +518,6 @@ This package provides bindings for the xtest extension.
 Summary: X protocol C-language Binding Library (xv extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
@@ -557,7 +538,6 @@ This package provides bindings for the xv extension.
 Summary: X protocol C-language Binding Library (xvmc extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb} <= 1.3-1
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
