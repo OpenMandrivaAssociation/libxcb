@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.4
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -73,6 +73,7 @@ threading support, and extensibility.
 # Need obsoletes
 %define libxcb_util0       %mklibname xcb-util        0
 %define libxcb_util1       %mklibname xcb-util        1
+%define libxcb_randr1      %mklibname xcb-randr       1
 
 #-----------------------------------------------------------
 
@@ -82,6 +83,9 @@ Group: System/X11
 Provides: %{name} = %{version}
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
+# Bug #53733: libxcb_randr1 was wrongly obsoleting old %{libxcb}s
+Conflicts: %{libxcb_randr1} < 1.4
+Obsoletes: %{libxcb_randr1} < 1.4
 
 %description -n %{libxcb}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -238,6 +242,9 @@ This package provides bindings for the glx extension.
 Summary: X protocol C-language Binding Library (randr extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
+# Bug #53733 explains why libxcb-randr0 obsoletes libxcb-randr1 < 1.4
+Conflicts: %{libxcb_randr1} < 1.4
+Obsoletes: %{libxcb_randr1} < 1.4
 Obsoletes: %{libxcb_util0}
 Obsoletes: %{libxcb_util1}
 
