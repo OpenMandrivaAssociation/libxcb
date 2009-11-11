@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.4
-Release: %mkrel 3
+Release: %mkrel 4
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -99,7 +99,9 @@ Summary: Development files for %{name}
 Group: Development/X11
 Requires: x11-proto-devel >= 1.2.0
 Provides: xcb-devel = %{version}-%{release}
+Provides: libxcb-devel = %{version}-%{release}
 Obsoletes: %{libxcb}-devel
+
 Requires: %{libxcb} = %{version}
 Requires: %{libxcb_composite} = %{version}
 Requires: %{libxcb_damage} = %{version}
