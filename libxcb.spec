@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
-Version: 1.4
-Release: %mkrel 4
+Version: 1.5
+Release: %mkrel 1
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -32,6 +32,7 @@ threading support, and extensibility.
 %define compositemajor 0
 %define damagemajor 0
 %define dpmsmajor 0
+%define dri2major 0
 %define glxmajor 0
 %define randrmajor 0
 %define recordmajor 0
@@ -53,6 +54,7 @@ threading support, and extensibility.
 %define libxcb_composite   %mklibname xcb-composite   %compositemajor
 %define libxcb_damage      %mklibname xcb-damage      %damagemajor
 %define libxcb_dpms        %mklibname xcb-dpms        %dpmsmajor
+%define libxcb_dri2        %mklibname xcb-dri2_       %dri2major
 %define libxcb_glx         %mklibname xcb-glx         %glxmajor
 %define libxcb_randr       %mklibname xcb-randr       %randrmajor
 %define libxcb_record      %mklibname xcb-record      %recordmajor
@@ -106,6 +108,7 @@ Requires: %{libxcb} = %{version}
 Requires: %{libxcb_composite} = %{version}
 Requires: %{libxcb_damage} = %{version}
 Requires: %{libxcb_dpms} = %{version}
+Requires: %{libxcb_dri2} = %{version}
 Requires: %{libxcb_glx} = %{version}
 Requires: %{libxcb_randr} = %{version}
 Requires: %{libxcb_record} = %{version}
@@ -217,6 +220,26 @@ This package provides bindings for the dpms extension.
 %files -n %{libxcb_dpms}
 %defattr(-,root,root)
 %{_libdir}/libxcb-dpms.so.%{dpmsmajor}*
+
+#-----------------------------------------------------------
+
+%package -n %{libxcb_dri2}
+Summary: X protocol C-language Binding Library (dri2 extension)
+Group: System/X11
+Conflicts: %{libxcb} <= 1.3-1
+Obsoletes: %{libxcb_util0}
+Obsoletes: %{libxcb_util1}
+
+%description -n %{libxcb_dri2}
+the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
+a small footprint, latency hiding, direct access to the protocol, improved
+threading support, and extensibility.
+
+This package provides bindings for the dri2 extension.
+
+%files -n %{libxcb_dri2}
+%defattr(-,root,root)
+%{_libdir}/libxcb-dri2.so.%{dri2major}*
 
 #-----------------------------------------------------------
 
