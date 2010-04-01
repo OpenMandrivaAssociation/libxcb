@@ -1,7 +1,7 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.5
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
@@ -94,6 +94,10 @@ the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
 a small footprint, latency hiding, direct access to the protocol, improved
 threading support, and extensibility.
 
+%files -n %{libxcb}
+%defattr(-,root,root)
+%{_libdir}/libxcb.so.%{major}*
+
 #-----------------------------------------------------------
 
 %package -n %{libdev}
@@ -159,7 +163,19 @@ Static development files for %{name}
 %files -n %{libdevst}
 %defattr(-,root,root)
 %{_libdir}/libxcb*.a
-%{_docdir}/libxcb/*
+
+#-----------------------------------------------------------
+
+%package doc
+Summary: Documentation for %{name}
+Group: Development/X11
+
+%description doc
+Documentation for %{name}
+
+%files doc
+%defattr(-,root,root)
+%{_docdir}/libxcb
 
 #-----------------------------------------------------------
 
@@ -608,8 +624,4 @@ rm -rf %{buildroot}
 %if %mdkversion < 200900
 %postun -n %{libxcb} -p /sbin/ldconfig
 %endif
-
-%files -n %{libxcb}
-%defattr(-,root,root)
-%{_libdir}/libxcb.so.%{major}*
 
