@@ -10,7 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 
 # because of xcb-proto-1.5 (at least)
 BuildRequires: x11-proto-devel >= 7.4-17mdv
-
+BuildRequires: libxau-devel
 BuildRequires: x11-util-macros >= 1.0.1
 BuildRequires: libpthread-stubs
 BuildRequires: libxslt-proc
