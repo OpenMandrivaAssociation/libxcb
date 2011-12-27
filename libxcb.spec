@@ -1,12 +1,11 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
 Version: 1.7
-Release: %mkrel 3
+Release:  4
 Group: System/X11
 License: MIT
 URL: http://xcb.freedesktop.org
 Source0: http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-root
 
 # because of xcb-proto-1.5 (at least)
 BuildRequires: x11-proto-devel >= 7.4-17mdv
@@ -27,7 +26,6 @@ threading support, and extensibility.
 %define major 1
 %define libxcb %mklibname xcb %major
 %define libdev %mklibname xcb -d
-%define libdevst %mklibname xcb -d -s
 
 %define compositemajor 0
 %define damagemajor 0
@@ -95,7 +93,6 @@ a small footprint, latency hiding, direct access to the protocol, improved
 threading support, and extensibility.
 
 %files -n %{libxcb}
-%defattr(-,root,root)
 %{_libdir}/libxcb.so.%{major}*
 
 #-----------------------------------------------------------
@@ -103,10 +100,9 @@ threading support, and extensibility.
 %package -n %{libdev}
 Summary: Development files for %{name}
 Group: Development/X11
-Requires: x11-proto-devel >= 1.2.0
 Provides: xcb-devel = %{version}-%{release}
-Provides: libxcb-devel = %{version}-%{release}
-Obsoletes: %{libxcb}-devel
+Obsoletes: %{_lib}xcb1-devel
+Obsoletes: %{_lib}xcb-static-devel
 
 Requires: %{libxcb} = %{version}
 Requires: %{libxcb_composite} = %{version}
@@ -130,39 +126,17 @@ Requires: %{libxcb_xprint} = %{version}
 Requires: %{libxcb_xtest} = %{version}
 Requires: %{libxcb_xv} = %{version}
 Requires: %{libxcb_xvmc} = %{version}
-
 # gw this isn't picked up by the automatic pkgconfig deps, but without it,
 # pkg-config --libs xcb will fail
 Requires: libpthread-stubs
-
 
 %description -n %{libdev}
 Development files for %{name}
 
 %files -n %{libdev}
-%defattr(-,root,root)
 %{_includedir}/xcb/*.h
-%{_libdir}/libxcb*.la
 %{_libdir}/libxcb*.so
 %{_libdir}/pkgconfig/xcb*.pc
-
-#-----------------------------------------------------------
-
-%package -n %{libdevst}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: %{libdev} = %{version}
-Obsoletes: %{libxcb}-static-devel
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
-Provides: libxcb-static-devel = %version-%release
-
-%description -n %{libdevst}
-Static development files for %{name}
-
-%files -n %{libdevst}
-%defattr(-,root,root)
-%{_libdir}/libxcb*.a
 
 #-----------------------------------------------------------
 
@@ -174,7 +148,6 @@ Group: Development/X11
 Documentation for %{name}
 
 %files doc
-%defattr(-,root,root)
 %{_docdir}/libxcb
 
 #-----------------------------------------------------------
@@ -194,7 +167,6 @@ threading support, and extensibility.
 This package provides bindings for the composite extension.
 
 %files -n %{libxcb_composite}
-%defattr(-,root,root)
 %{_libdir}/libxcb-composite.so.%{compositemajor}*
 
 #-----------------------------------------------------------
@@ -214,7 +186,6 @@ threading support, and extensibility.
 This package provides bindings for the damage extension.
 
 %files -n %{libxcb_damage}
-%defattr(-,root,root)
 %{_libdir}/libxcb-damage.so.%{damagemajor}*
 
 #-----------------------------------------------------------
@@ -234,7 +205,6 @@ threading support, and extensibility.
 This package provides bindings for the dpms extension.
 
 %files -n %{libxcb_dpms}
-%defattr(-,root,root)
 %{_libdir}/libxcb-dpms.so.%{dpmsmajor}*
 
 #-----------------------------------------------------------
@@ -254,7 +224,6 @@ threading support, and extensibility.
 This package provides bindings for the dri2 extension.
 
 %files -n %{libxcb_dri2}
-%defattr(-,root,root)
 %{_libdir}/libxcb-dri2.so.%{dri2major}*
 
 #-----------------------------------------------------------
@@ -274,7 +243,6 @@ threading support, and extensibility.
 This package provides bindings for the glx extension.
 
 %files -n %{libxcb_glx}
-%defattr(-,root,root)
 %{_libdir}/libxcb-glx.so.%{glxmajor}*
 
 #-----------------------------------------------------------
@@ -297,7 +265,6 @@ threading support, and extensibility.
 This package provides bindings for the randr extension.
 
 %files -n %{libxcb_randr}
-%defattr(-,root,root)
 %{_libdir}/libxcb-randr.so.%{randrmajor}*
 
 #-----------------------------------------------------------
@@ -317,7 +284,6 @@ threading support, and extensibility.
 This package provides bindings for the record extension.
 
 %files -n %{libxcb_record}
-%defattr(-,root,root)
 %{_libdir}/libxcb-record.so.%{recordmajor}*
 
 #-----------------------------------------------------------
@@ -337,7 +303,6 @@ threading support, and extensibility.
 This package provides bindings for the render extension.
 
 %files -n %{libxcb_render}
-%defattr(-,root,root)
 %{_libdir}/libxcb-render.so.%{rendermajor}*
 
 #-----------------------------------------------------------
@@ -357,7 +322,6 @@ threading support, and extensibility.
 This package provides bindings for the res extension.
 
 %files -n %{libxcb_res}
-%defattr(-,root,root)
 %{_libdir}/libxcb-res.so.%{resmajor}*
 
 #-----------------------------------------------------------
@@ -377,7 +341,6 @@ threading support, and extensibility.
 This package provides bindings for the screensaver extension.
 
 %files -n %{libxcb_screensaver}
-%defattr(-,root,root)
 %{_libdir}/libxcb-screensaver.so.%{screensavermajor}*
 
 #-----------------------------------------------------------
@@ -397,7 +360,6 @@ threading support, and extensibility.
 This package provides bindings for the shape extension.
 
 %files -n %{libxcb_shape}
-%defattr(-,root,root)
 %{_libdir}/libxcb-shape.so.%{shapemajor}*
 
 #-----------------------------------------------------------
@@ -417,7 +379,6 @@ threading support, and extensibility.
 This package provides bindings for the shm extension.
 
 %files -n %{libxcb_shm}
-%defattr(-,root,root)
 %{_libdir}/libxcb-shm.so.%{shmmajor}*
 
 #-----------------------------------------------------------
@@ -437,7 +398,6 @@ threading support, and extensibility.
 This package provides bindings for the sync extension.
 
 %files -n %{libxcb_sync}
-%defattr(-,root,root)
 %{_libdir}/libxcb-sync.so.%{syncmajor}*
 
 #-----------------------------------------------------------
@@ -457,7 +417,6 @@ threading support, and extensibility.
 This package provides bindings for the xevie extension.
 
 %files -n %{libxcb_xevie}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xevie.so.%{xeviemajor}*
 
 #-----------------------------------------------------------
@@ -477,7 +436,6 @@ threading support, and extensibility.
 This package provides bindings for the xf86dri extension.
 
 %files -n %{libxcb_xf86dri}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xf86dri.so.%{xf86drimajor}*
 
 #-----------------------------------------------------------
@@ -497,7 +455,6 @@ threading support, and extensibility.
 This package provides bindings for the xfixes extension.
 
 %files -n %{libxcb_xfixes}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xfixes.so.%{xfixesmajor}*
 
 #-----------------------------------------------------------
@@ -517,7 +474,6 @@ threading support, and extensibility.
 This package provides bindings for the xinerama extension.
 
 %files -n %{libxcb_xinerama}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xinerama.so.%{xineramamajor}*
 
 #-----------------------------------------------------------
@@ -537,7 +493,6 @@ threading support, and extensibility.
 This package provides bindings for the xprint extension.
 
 %files -n %{libxcb_xprint}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xprint.so.%{xprintmajor}*
 
 #-----------------------------------------------------------
@@ -557,7 +512,6 @@ threading support, and extensibility.
 This package provides bindings for the xtest extension.
 
 %files -n %{libxcb_xtest}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xtest.so.%{xtestmajor}*
 
 #-----------------------------------------------------------
@@ -577,7 +531,6 @@ threading support, and extensibility.
 This package provides bindings for the xv extension.
 
 %files -n %{libxcb_xv}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xv.so.%{xvmajor}*
 
 #-----------------------------------------------------------
@@ -597,31 +550,20 @@ threading support, and extensibility.
 This package provides bindings for the xvmc extension.
 
 %files -n %{libxcb_xvmc}
-%defattr(-,root,root)
 %{_libdir}/libxcb-xvmc.so.%{xvmcmajor}*
 
 #-----------------------------------------------------------
-
 
 %prep
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+	--disable-static
 
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libxcb} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libxcb} -p /sbin/ldconfig
-%endif
 
