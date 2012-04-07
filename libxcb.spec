@@ -1,6 +1,6 @@
 Name: libxcb
 Summary: X protocol C-language Binding Library
-Version: 1.8
+Version: 1.8.1
 Release:  1
 Group: System/X11
 License: MIT
