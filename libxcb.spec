@@ -1,22 +1,21 @@
-Name: libxcb
-Summary: X protocol C-language Binding Library
-Version: 1.8.1
-Release:  1
-Group: System/X11
-License: MIT
-URL: http://xcb.freedesktop.org
-Source0: http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
+Summary:	X protocol C-language Binding Library
+Name:		libxcb
+Version:	1.8.1
+Release:	2
+Group:		System/X11
+License:	MIT
+URL:		http://xcb.freedesktop.org
+Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 
-# because of xcb-proto-1.5 (at least)
-BuildRequires: x11-proto-devel >= 7.4-17mdv
-BuildRequires: libxau-devel
-BuildRequires: x11-util-macros >= 1.0.1
-BuildRequires: libpthread-stubs
-BuildRequires: libxslt-proc
-BuildRequires: libxdmcp-devel
-BuildRequires: doxygen
-BuildRequires: python-celementtree
-BuildRequires: graphviz
+BuildRequires:	doxygen
+BuildRequires:	graphviz
+BuildRequires:	xsltproc
+BuildRequires:	python-celementtree
+BuildRequires:	pkgconfig(pthread-stubs)
+BuildRequires:	pkgconfig(xau)
+BuildRequires:	pkgconfig(xdmcp)
+BuildRequires:	pkgconfig(xorg-macros)
+BuildRequires:	pkgconfig(xproto)
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -71,8 +70,6 @@ threading support, and extensibility.
 %define libxcb_xv          %mklibname xcb-xv          %xvmajor
 %define libxcb_xvmc        %mklibname xcb-xvmc        %xvmcmajor
 # Need obsoletes
-%define libxcb_util0       %mklibname xcb-util        1
-%define libxcb_util1       %mklibname xcb-util        1
 %define libxcb_randr1      %mklibname xcb-randr       1
 
 #-----------------------------------------------------------
@@ -81,10 +78,6 @@ threading support, and extensibility.
 Summary: X protocol C-language Binding Library
 Group: System/X11
 Provides: %{name} = %{version}
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
-# Bug #53733: libxcb_randr1 was wrongly obsoleting old %{libxcb}s
-Conflicts: %{libxcb_randr1} < 1.4
 Obsoletes: %{libxcb_randr1} < 1.4
 
 %description -n %{libxcb}
@@ -156,8 +149,6 @@ Documentation for %{name}
 Summary: X protocol C-language Binding Library (composite extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_composite}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -175,8 +166,6 @@ This package provides bindings for the composite extension.
 Summary: X protocol C-language Binding Library (damage extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_damage}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -194,8 +183,6 @@ This package provides bindings for the damage extension.
 Summary: X protocol C-language Binding Library (dpms extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_dpms}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -213,8 +200,6 @@ This package provides bindings for the dpms extension.
 Summary: X protocol C-language Binding Library (dri2 extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_dri2}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -232,8 +217,6 @@ This package provides bindings for the dri2 extension.
 Summary: X protocol C-language Binding Library (glx extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_glx}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -251,11 +234,7 @@ This package provides bindings for the glx extension.
 Summary: X protocol C-language Binding Library (randr extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-# Bug #53733 explains why libxcb-randr0 obsoletes libxcb-randr1 < 1.4
-Conflicts: %{libxcb_randr1} < 1.4
 Obsoletes: %{libxcb_randr1} < 1.4
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_randr}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -273,8 +252,6 @@ This package provides bindings for the randr extension.
 Summary: X protocol C-language Binding Library (record extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_record}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -292,8 +269,6 @@ This package provides bindings for the record extension.
 Summary: X protocol C-language Binding Library (render extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_render}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -311,8 +286,6 @@ This package provides bindings for the render extension.
 Summary: X protocol C-language Binding Library (res extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_res}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -330,8 +303,6 @@ This package provides bindings for the res extension.
 Summary: X protocol C-language Binding Library (screensaver extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_screensaver}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -349,8 +320,6 @@ This package provides bindings for the screensaver extension.
 Summary: X protocol C-language Binding Library (shape extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_shape}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -368,8 +337,6 @@ This package provides bindings for the shape extension.
 Summary: X protocol C-language Binding Library (shm extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_shm}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -387,8 +354,6 @@ This package provides bindings for the shm extension.
 Summary: X protocol C-language Binding Library (sync extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_sync}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -406,8 +371,6 @@ This package provides bindings for the sync extension.
 Summary: X protocol C-language Binding Library (xevie extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xevie}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -425,8 +388,6 @@ This package provides bindings for the xevie extension.
 Summary: X protocol C-language Binding Library (xf86dri extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xf86dri}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -444,8 +405,6 @@ This package provides bindings for the xf86dri extension.
 Summary: X protocol C-language Binding Library (xfixes extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xfixes}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -463,8 +422,6 @@ This package provides bindings for the xfixes extension.
 Summary: X protocol C-language Binding Library (xinerama extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xinerama}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -482,8 +439,6 @@ This package provides bindings for the xinerama extension.
 Summary: X protocol C-language Binding Library (xprint extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xprint}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -501,8 +456,6 @@ This package provides bindings for the xprint extension.
 Summary: X protocol C-language Binding Library (xtest extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xtest}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -520,8 +473,6 @@ This package provides bindings for the xtest extension.
 Summary: X protocol C-language Binding Library (xv extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xv}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -539,8 +490,6 @@ This package provides bindings for the xv extension.
 Summary: X protocol C-language Binding Library (xvmc extension)
 Group: System/X11
 Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_util0}
-Obsoletes: %{libxcb_util1}
 
 %description -n %{libxcb_xvmc}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
