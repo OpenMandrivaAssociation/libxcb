@@ -1,7 +1,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.8.1
-Release:	2
+Version:	1.9
+Release:	1
 Group:		System/X11
 License:	MIT
 URL:		http://xcb.freedesktop.org
@@ -75,10 +75,10 @@ threading support, and extensibility.
 #-----------------------------------------------------------
 
 %package -n %{libxcb}
-Summary: X protocol C-language Binding Library
-Group: System/X11
-Provides: %{name} = %{version}
-Obsoletes: %{libxcb_randr1} < 1.4
+Summary:	X protocol C-language Binding Library
+Group:		System/X11
+Provides:	%{name} = %{version}-%{release}
+Obsoletes:	%{libxcb_randr1} < 1.4
 
 %description -n %{libxcb}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -91,40 +91,40 @@ threading support, and extensibility.
 #-----------------------------------------------------------
 
 %package -n %{libdev}
-Summary: Development files for %{name}
-Group: Development/X11
-Provides: xcb-devel = %{version}-%{release}
-Obsoletes: %{_lib}xcb1-devel
-Obsoletes: %{_lib}xcb-static-devel
+Summary:	Development files for %{name}
+Group:		Development/X11
+Provides:	xcb-devel = %{version}-%{release}
+Obsoletes:	%{_lib}xcb1-devel < 1.9
+Obsoletes:	%{_lib}xcb-static-devel < 1.9
 
-Requires: %{libxcb} = %{version}
-Requires: %{libxcb_composite} = %{version}
-Requires: %{libxcb_damage} = %{version}
-Requires: %{libxcb_dpms} = %{version}
-Requires: %{libxcb_dri2} = %{version}
-Requires: %{libxcb_glx} = %{version}
-Requires: %{libxcb_randr} = %{version}
-Requires: %{libxcb_record} = %{version}
-Requires: %{libxcb_render} = %{version}
-Requires: %{libxcb_res} = %{version}
-Requires: %{libxcb_screensaver} = %{version}
-Requires: %{libxcb_shape} = %{version}
-Requires: %{libxcb_shm} = %{version}
-Requires: %{libxcb_sync} = %{version}
-Requires: %{libxcb_xevie} = %{version}
-Requires: %{libxcb_xf86dri} = %{version}
-Requires: %{libxcb_xfixes} = %{version}
-Requires: %{libxcb_xinerama} = %{version}
-Requires: %{libxcb_xprint} = %{version}
-Requires: %{libxcb_xtest} = %{version}
-Requires: %{libxcb_xv} = %{version}
-Requires: %{libxcb_xvmc} = %{version}
+Requires:	%{libxcb} = %{version}-%{release}
+Requires:	%{libxcb_composite} = %{version}-%{release}
+Requires:	%{libxcb_damage} = %{version}-%{release}
+Requires:	%{libxcb_dpms} = %{version}-%{release}
+Requires:	%{libxcb_dri2} = %{version}-%{release}
+Requires:	%{libxcb_glx} = %{version}-%{release}
+Requires:	%{libxcb_randr} = %{version}-%{release}
+Requires:	%{libxcb_record} = %{version}-%{release}
+Requires:	%{libxcb_render} = %{version}-%{release}
+Requires:	%{libxcb_res} = %{version}-%{release}
+Requires:	%{libxcb_screensaver} = %{version}-%{release}
+Requires:	%{libxcb_shape} = %{version}-%{release}
+Requires:	%{libxcb_shm} = %{version}-%{release}
+Requires:	%{libxcb_sync} = %{version}-%{release}
+Requires:	%{libxcb_xevie} = %{version}-%{release}
+Requires:	%{libxcb_xf86dri} = %{version}-%{release}
+Requires:	%{libxcb_xfixes} = %{version}-%{release}
+Requires:	%{libxcb_xinerama} = %{version}-%{release}
+Requires:	%{libxcb_xprint} = %{version}-%{release}
+Requires:	%{libxcb_xtest} = %{version}-%{release}
+Requires:	%{libxcb_xv} = %{version}-%{release}
+Requires:	%{libxcb_xvmc} = %{version}-%{release}
 # gw this isn't picked up by the automatic pkgconfig deps, but without it,
 # pkg-config --libs xcb will fail
-Requires: libpthread-stubs
+Requires:	libpthread-stubs
 
 %description -n %{libdev}
-Development files for %{name}
+Development files for %{name}.
 
 %files -n %{libdev}
 %{_includedir}/xcb/*.h
@@ -134,11 +134,11 @@ Development files for %{name}
 #-----------------------------------------------------------
 
 %package doc
-Summary: Documentation for %{name}
-Group: Development/X11
+Summary:	Documentation for %{name}
+Group:		Development/X11
 
 %description doc
-Documentation for %{name}
+Documentation for %{name}.
 
 %files doc
 %{_docdir}/libxcb
@@ -146,9 +146,9 @@ Documentation for %{name}
 #-----------------------------------------------------------
 
 %package -n %{libxcb_composite}
-Summary: X protocol C-language Binding Library (composite extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (composite extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_composite}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -163,9 +163,9 @@ This package provides bindings for the composite extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_damage}
-Summary: X protocol C-language Binding Library (damage extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (damage extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_damage}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -180,9 +180,9 @@ This package provides bindings for the damage extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_dpms}
-Summary: X protocol C-language Binding Library (dpms extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (dpms extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_dpms}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -197,9 +197,9 @@ This package provides bindings for the dpms extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_dri2}
-Summary: X protocol C-language Binding Library (dri2 extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (dri2 extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_dri2}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -214,9 +214,9 @@ This package provides bindings for the dri2 extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_glx}
-Summary: X protocol C-language Binding Library (glx extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (glx extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_glx}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -231,10 +231,10 @@ This package provides bindings for the glx extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_randr}
-Summary: X protocol C-language Binding Library (randr extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
-Obsoletes: %{libxcb_randr1} < 1.4
+Summary:	X protocol C-language Binding Library (randr extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+Obsoletes:	%{libxcb_randr1} < 1.4
 
 %description -n %{libxcb_randr}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -249,9 +249,9 @@ This package provides bindings for the randr extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_record}
-Summary: X protocol C-language Binding Library (record extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (record extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_record}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -266,9 +266,9 @@ This package provides bindings for the record extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_render}
-Summary: X protocol C-language Binding Library (render extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (render extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_render}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -283,9 +283,9 @@ This package provides bindings for the render extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_res}
-Summary: X protocol C-language Binding Library (res extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (res extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_res}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -300,9 +300,9 @@ This package provides bindings for the res extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_screensaver}
-Summary: X protocol C-language Binding Library (screensaver extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (screensaver extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_screensaver}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -317,9 +317,9 @@ This package provides bindings for the screensaver extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_shape}
-Summary: X protocol C-language Binding Library (shape extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (shape extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_shape}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -334,9 +334,9 @@ This package provides bindings for the shape extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_shm}
-Summary: X protocol C-language Binding Library (shm extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (shm extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_shm}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -351,9 +351,9 @@ This package provides bindings for the shm extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_sync}
-Summary: X protocol C-language Binding Library (sync extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (sync extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_sync}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -368,9 +368,9 @@ This package provides bindings for the sync extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xevie}
-Summary: X protocol C-language Binding Library (xevie extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xevie extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xevie}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -385,9 +385,9 @@ This package provides bindings for the xevie extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xf86dri}
-Summary: X protocol C-language Binding Library (xf86dri extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xf86dri extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xf86dri}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -402,9 +402,9 @@ This package provides bindings for the xf86dri extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xfixes}
-Summary: X protocol C-language Binding Library (xfixes extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xfixes extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xfixes}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -419,9 +419,9 @@ This package provides bindings for the xfixes extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xinerama}
-Summary: X protocol C-language Binding Library (xinerama extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xinerama extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xinerama}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -436,9 +436,9 @@ This package provides bindings for the xinerama extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xprint}
-Summary: X protocol C-language Binding Library (xprint extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xprint extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xprint}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -453,9 +453,9 @@ This package provides bindings for the xprint extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xtest}
-Summary: X protocol C-language Binding Library (xtest extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xtest extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xtest}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -470,9 +470,9 @@ This package provides bindings for the xtest extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xv}
-Summary: X protocol C-language Binding Library (xv extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xv extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xv}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -487,9 +487,9 @@ This package provides bindings for the xv extension.
 #-----------------------------------------------------------
 
 %package -n %{libxcb_xvmc}
-Summary: X protocol C-language Binding Library (xvmc extension)
-Group: System/X11
-Conflicts: %{libxcb} <= 1.3-1
+Summary:	X protocol C-language Binding Library (xvmc extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
 
 %description -n %{libxcb_xvmc}
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
