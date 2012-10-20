@@ -503,6 +503,18 @@ This package provides bindings for the xvmc extension.
 
 #-----------------------------------------------------------
 
+%package manpages
+Summary:	Manpages for %{name}
+Group:		Books/Other
+
+%description manpages
+Manpages for all %{name} libraries.
+
+%files manpages
+%{_mandir}/man3/xcb*.3.*
+
+#-----------------------------------------------------------
+
 %prep
 %setup -q
 
