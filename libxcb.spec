@@ -1,7 +1,7 @@
 Name:		libxcb
 Summary:	X protocol C-language Binding Library
 Version:	1.9
-Release:	2
+Release:	3
 Group:		System/X11
 License:	MIT
 URL:		http://xcb.freedesktop.org
@@ -9,7 +9,7 @@ Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 
 # because of xcb-proto-1.5 (at least)
 BuildRequires:	x11-proto-devel >= 7.4-17mdv
-BuildRequires:	libxau-devel
+BuildRequires:	pkgconfig(xau)
 BuildRequires:	pkgconfig(xorg-macros) >= 1.0.1
 BuildRequires:	libpthread-stubs
 BuildRequires:	pkgconfig(libexslt)
