@@ -7,18 +7,17 @@ License:	MIT
 URL:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 
-# because of xcb-proto-1.5 (at least)
-BuildRequires:	x11-proto-devel >= 7.4-17mdv
-BuildRequires:	pkgconfig(xau)
-BuildRequires:	pkgconfig(xorg-macros) >= 1.0.1
 BuildRequires:	libpthread-stubs
-BuildRequires:	pkgconfig(libexslt)
-BuildRequires:	libxdmcp-devel
 BuildRequires:	doxygen
-BuildRequires:	python-celementtree
 BuildRequires:	graphviz
-BuildRequires:	pkgconfig(libxslt)
+BuildRequires:	python-celementtree
 BuildRequires:	xsltproc
+BuildRequires:	libxdmcp-devel
+BuildRequires:	pkgconfig(libexslt)
+BuildRequires:	pkgconfig(libxslt)
+BuildRequires:	pkgconfig(xau)
+BuildRequires:	pkgconfig(xcb-proto)
+BuildRequires:	pkgconfig(xorg-macros)
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -26,8 +25,8 @@ a small footprint, latency hiding, direct access to the protocol, improved
 threading support, and extensibility.
 
 %define major 1
-%define libxcb %mklibname xcb %major
-%define libdev %mklibname xcb -d
+%define libxcb %mklibname xcb %{major}
+%define devname %mklibname xcb -d
 
 %define compositemajor 0
 %define damagemajor 0
@@ -51,27 +50,27 @@ threading support, and extensibility.
 %define xvmajor 0
 %define xvmcmajor 0
 
-%define libxcb_composite   %mklibname xcb-composite   %compositemajor
-%define libxcb_damage      %mklibname xcb-damage      %damagemajor
-%define libxcb_dpms        %mklibname xcb-dpms        %dpmsmajor
-%define libxcb_dri2        %mklibname xcb-dri2_       %dri2major
-%define libxcb_glx         %mklibname xcb-glx         %glxmajor
-%define libxcb_randr       %mklibname xcb-randr       %randrmajor
-%define libxcb_record      %mklibname xcb-record      %recordmajor
-%define libxcb_render      %mklibname xcb-render      %rendermajor
-%define libxcb_res         %mklibname xcb-res         %resmajor
-%define libxcb_screensaver %mklibname xcb-screensaver %screensavermajor
-%define libxcb_shape       %mklibname xcb-shape       %shapemajor
-%define libxcb_shm         %mklibname xcb-shm         %shmmajor
-%define libxcb_sync        %mklibname xcb-sync        %syncmajor
-%define libxcb_xevie       %mklibname xcb-xevie       %xeviemajor
-%define libxcb_xf86dri     %mklibname xcb-xf86dri     %xf86drimajor
-%define libxcb_xfixes      %mklibname xcb-xfixes      %xfixesmajor
-%define libxcb_xinerama    %mklibname xcb-xinerama    %xineramamajor
-%define libxcb_xprint      %mklibname xcb-xprint      %xprintmajor
-%define libxcb_xtest       %mklibname xcb-xtest       %xtestmajor
-%define libxcb_xv          %mklibname xcb-xv          %xvmajor
-%define libxcb_xvmc        %mklibname xcb-xvmc        %xvmcmajor
+%define libxcb_composite   %mklibname xcb-composite   %{compositemajor}
+%define libxcb_damage      %mklibname xcb-damage      %{damagemajor}
+%define libxcb_dpms        %mklibname xcb-dpms        %{dpmsmajor}
+%define libxcb_dri2        %mklibname xcb-dri2_       %{dri2major}
+%define libxcb_glx         %mklibname xcb-glx         %{glxmajor}
+%define libxcb_randr       %mklibname xcb-randr       %{randrmajor}
+%define libxcb_record      %mklibname xcb-record      %{recordmajor}
+%define libxcb_render      %mklibname xcb-render      %{rendermajor}
+%define libxcb_res         %mklibname xcb-res         %{resmajor}
+%define libxcb_screensaver %mklibname xcb-screensaver %{screensavermajor}
+%define libxcb_shape       %mklibname xcb-shape       %{shapemajor}
+%define libxcb_shm         %mklibname xcb-shm         %{shmmajor}
+%define libxcb_sync        %mklibname xcb-sync        %{syncmajor}
+%define libxcb_xevie       %mklibname xcb-xevie       %{xeviemajor}
+%define libxcb_xf86dri     %mklibname xcb-xf86dri     %{xf86drimajor}
+%define libxcb_xfixes      %mklibname xcb-xfixes      %{xfixesmajor}
+%define libxcb_xinerama    %mklibname xcb-xinerama    %{xineramamajor}
+%define libxcb_xprint      %mklibname xcb-xprint      %{xprintmajor}
+%define libxcb_xtest       %mklibname xcb-xtest       %{xtestmajor}
+%define libxcb_xv          %mklibname xcb-xv          %{xvmajor}
+%define libxcb_xvmc        %mklibname xcb-xvmc        %{xvmcmajor}
 # Need obsoletes
 %define libxcb_util0       %mklibname xcb-util        0
 %define libxcb_util1       %mklibname xcb-util        1
@@ -95,7 +94,7 @@ threading support, and extensibility.
 %files -n %{libxcb}
 %{_libdir}/libxcb.so.%{major}*
 
-%package -n %{libdev}
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/X11
 Provides:	xcb-devel = %{version}-%{release}
@@ -128,10 +127,10 @@ Requires:	%{libxcb_xvmc} = %{version}
 # pkg-config --libs xcb will fail
 Requires:	libpthread-stubs
 
-%description -n %{libdev}
+%description -n %{devname}
 Development files for %{name}.
 
-%files -n %{libdev}
+%files -n %{devname}
 %{_includedir}/xcb/*.h
 %{_libdir}/libxcb*.so
 %{_libdir}/pkgconfig/xcb*.pc
