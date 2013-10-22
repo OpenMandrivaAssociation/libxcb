@@ -1,7 +1,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.9.1
-Release:	2
+Release:	3
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -18,6 +18,8 @@ BuildRequires:	pkgconfig(xau)
 BuildRequires:	pkgconfig(xcb-proto)
 BuildRequires:	pkgconfig(xdmcp)
 BuildRequires:	pkgconfig(xorg-macros)
+BuildRequires:	pkgconfig(xi)
+BuildRequires:	pkgconfig(xkbcomp) pkgconfig(xkbfile)
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -45,6 +47,8 @@ threading support, and extensibility.
 %define xf86drimajor 0
 %define xfixesmajor 0
 %define xineramamajor 0
+%define xinputmajor 0
+%define xkbmajor 0
 %define xprintmajor 0
 %define xtestmajor 0
 %define xvmajor 0
@@ -67,6 +71,8 @@ threading support, and extensibility.
 %define libxcb_xf86dri     %mklibname xcb-xf86dri     %{xf86drimajor}
 %define libxcb_xfixes      %mklibname xcb-xfixes      %{xfixesmajor}
 %define libxcb_xinerama    %mklibname xcb-xinerama    %{xineramamajor}
+%define libxcb_xinput      %mklibname xcb-xinput      %{xinputmajor}
+%define libxcb_xkb         %mklibname xcb-xkb         %{xkbmajor}
 %define libxcb_xprint      %mklibname xcb-xprint      %{xprintmajor}
 %define libxcb_xtest       %mklibname xcb-xtest       %{xtestmajor}
 %define libxcb_xv          %mklibname xcb-xv          %{xvmajor}
@@ -92,29 +98,31 @@ threading support, and extensibility.
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/X11
-Provides:	xcb-devel = %{version}-%{release}
-Requires:	%{libxcb} = %{version}-%{release}
-Requires:	%{libxcb_composite} = %{version}-%{release}
-Requires:	%{libxcb_damage} = %{version}-%{release}
-Requires:	%{libxcb_dpms} = %{version}-%{release}
-Requires:	%{libxcb_dri2} = %{version}-%{release}
-Requires:	%{libxcb_glx} = %{version}-%{release}
-Requires:	%{libxcb_randr} = %{version}-%{release}
-Requires:	%{libxcb_record} = %{version}-%{release}
-Requires:	%{libxcb_render} = %{version}-%{release}
-Requires:	%{libxcb_res} = %{version}-%{release}
-Requires:	%{libxcb_screensaver} = %{version}-%{release}
-Requires:	%{libxcb_shape} = %{version}-%{release}
-Requires:	%{libxcb_shm} = %{version}-%{release}
-Requires:	%{libxcb_sync} = %{version}-%{release}
-Requires:	%{libxcb_xevie} = %{version}-%{release}
-Requires:	%{libxcb_xf86dri} = %{version}-%{release}
-Requires:	%{libxcb_xfixes} = %{version}-%{release}
-Requires:	%{libxcb_xinerama} = %{version}-%{release}
-Requires:	%{libxcb_xprint} = %{version}-%{release}
-Requires:	%{libxcb_xtest} = %{version}-%{release}
-Requires:	%{libxcb_xv} = %{version}-%{release}
-Requires:	%{libxcb_xvmc} = %{version}-%{release}
+Provides:	xcb-devel = %{EVRD}
+Requires:	%{libxcb} = %{EVRD}
+Requires:	%{libxcb_composite} = %{EVRD}
+Requires:	%{libxcb_damage} = %{EVRD}
+Requires:	%{libxcb_dpms} = %{EVRD}
+Requires:	%{libxcb_dri2} = %{EVRD}
+Requires:	%{libxcb_glx} = %{EVRD}
+Requires:	%{libxcb_randr} = %{EVRD}
+Requires:	%{libxcb_record} = %{EVRD}
+Requires:	%{libxcb_render} = %{EVRD}
+Requires:	%{libxcb_res} = %{EVRD}
+Requires:	%{libxcb_screensaver} = %{EVRD}
+Requires:	%{libxcb_shape} = %{EVRD}
+Requires:	%{libxcb_shm} = %{EVRD}
+Requires:	%{libxcb_sync} = %{EVRD}
+Requires:	%{libxcb_xevie} = %{EVRD}
+Requires:	%{libxcb_xf86dri} = %{EVRD}
+Requires:	%{libxcb_xfixes} = %{EVRD}
+Requires:	%{libxcb_xinerama} = %{EVRD}
+Requires:	%{libxcb_xprint} = %{EVRD}
+Requires:	%{libxcb_xtest} = %{EVRD}
+Requires:	%{libxcb_xv} = %{EVRD}
+Requires:	%{libxcb_xvmc} = %{EVRD}
+Requires:	%{libxcb_xinput} = %{EVRD}
+Requires:	%{libxcb_xkb} = %{EVRD}
 Requires:	pkgconfig(pthread-stubs)
 
 %description -n %{devname}
@@ -316,6 +324,28 @@ This package provides bindings for the xinerama extension.
 %files -n %{libxcb_xinerama}
 %{_libdir}/libxcb-xinerama.so.%{xineramamajor}*
 
+%package -n %{libxcb_xinput}
+Summary:	X protocol C-language Binding Library (xinput extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+
+%description -n %{libxcb_xinput}
+This package provides bindings for the xinput extension.
+
+%files -n %{libxcb_xinput}
+%{_libdir}/libxcb-xinput.so.%{xinputmajor}*
+
+%package -n %{libxcb_xkb}
+Summary:	X protocol C-language Binding Library (XKB extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+
+%description -n %{libxcb_xkb}
+This package provides bindings for the XKB extension.
+
+%files -n %{libxcb_xkb}
+%{_libdir}/libxcb-xkb.so.%{xkbmajor}*
+
 %package -n %{libxcb_xprint}
 Summary:	X protocol C-language Binding Library (xprint extension)
 Group:		System/X11
@@ -365,6 +395,8 @@ This package provides bindings for the xvmc extension.
 
 %build
 %configure2_5x \
+	--enable-xinput \
+	--enable-xkb \
 	--disable-static
 
 %make
