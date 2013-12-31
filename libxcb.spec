@@ -1,7 +1,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.9.1
-Release:	3
+Version:	1.10
+Release:	1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -34,7 +34,9 @@ threading support, and extensibility.
 %define damagemajor 0
 %define dpmsmajor 0
 %define dri2major 0
+%define dri3major 0
 %define glxmajor 0
+%define presentmajor 0
 %define randrmajor 0
 %define recordmajor 0
 %define rendermajor 0
@@ -42,13 +44,13 @@ threading support, and extensibility.
 %define screensavermajor 0
 %define shapemajor 0
 %define shmmajor 0
-%define syncmajor 0
+%define syncmajor 1
 %define xeviemajor 0
 %define xf86drimajor 0
 %define xfixesmajor 0
 %define xineramamajor 0
 %define xinputmajor 0
-%define xkbmajor 0
+%define xkbmajor 1
 %define xprintmajor 0
 %define xtestmajor 0
 %define xvmajor 0
@@ -58,7 +60,9 @@ threading support, and extensibility.
 %define libxcb_damage      %mklibname xcb-damage      %{damagemajor}
 %define libxcb_dpms        %mklibname xcb-dpms        %{dpmsmajor}
 %define libxcb_dri2        %mklibname xcb-dri2_       %{dri2major}
+%define libxcb_dri3        %mklibname xcb-dri3_       %{dri3major}
 %define libxcb_glx         %mklibname xcb-glx         %{glxmajor}
+%define libxcb_present     %mklibname xcb-present     %{presentmajor}
 %define libxcb_randr       %mklibname xcb-randr       %{randrmajor}
 %define libxcb_record      %mklibname xcb-record      %{recordmajor}
 %define libxcb_render      %mklibname xcb-render      %{rendermajor}
@@ -104,7 +108,9 @@ Requires:	%{libxcb_composite} = %{EVRD}
 Requires:	%{libxcb_damage} = %{EVRD}
 Requires:	%{libxcb_dpms} = %{EVRD}
 Requires:	%{libxcb_dri2} = %{EVRD}
+Requires:	%{libxcb_dri3} = %{EVRD}
 Requires:	%{libxcb_glx} = %{EVRD}
+Requires:	%{libxcb_present} = %{EVRD}
 Requires:	%{libxcb_randr} = %{EVRD}
 Requires:	%{libxcb_record} = %{EVRD}
 Requires:	%{libxcb_render} = %{EVRD}
@@ -179,6 +185,17 @@ This package provides bindings for the dri2 extension.
 %files -n %{libxcb_dri2}
 %{_libdir}/libxcb-dri2.so.%{dri2major}*
 
+%package -n %{libxcb_dri3}
+Summary:	X protocol C-language Binding Library (dri3 extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+
+%description -n %{libxcb_dri3}
+This package provides bindings for the dri3 extension.
+
+%files -n %{libxcb_dri3}
+%{_libdir}/libxcb-dri3.so.%{dri2major}*
+
 %package -n %{libxcb_glx}
 Summary:	X protocol C-language Binding Library (glx extension)
 Group:		System/X11
@@ -189,6 +206,17 @@ This package provides bindings for the glx extension.
 
 %files -n %{libxcb_glx}
 %{_libdir}/libxcb-glx.so.%{glxmajor}*
+
+%package -n %{libxcb_present}
+Summary:	X protocol C-language Binding Library (present extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+
+%description -n %{libxcb_present}
+This package provides bindings for the present extension.
+
+%files -n %{libxcb_present}
+%{_libdir}/libxcb-present.so.%{presentmajor}*
 
 %package -n %{libxcb_randr}
 Summary:	X protocol C-language Binding Library (randr extension)
