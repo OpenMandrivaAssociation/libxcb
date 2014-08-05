@@ -1,7 +1,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.10
-Release:	7
+Version:	1.11
+Release:	1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -422,7 +422,7 @@ This package provides bindings for the xvmc extension.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--enable-xinput \
 	--enable-xkb \
 	--disable-static
