@@ -9,7 +9,6 @@ Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-BuildRequires:	python-celementtree
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(libexslt)
 BuildRequires:	pkgconfig(libxslt)
