@@ -1,12 +1,12 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.11
-Release:	3
+Release:	4
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
-
+Patch0:		0001-XCB-special-event-wakeup-fixes.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	xsltproc
@@ -419,6 +419,7 @@ This package provides bindings for the xvmc extension.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %configure \
