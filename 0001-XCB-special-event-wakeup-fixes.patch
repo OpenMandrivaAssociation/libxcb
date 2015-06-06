@@ -1,0 +1,27 @@
+diff --git a/src/xcb_in.c b/src/xcb_in.c
+index 623a0a8..2ce5a56 100644
+--- a/src/xcb_in.c
++++ b/src/xcb_in.c
+@@ -761,6 +761,7 @@ xcb_generic_event_t *xcb_wait_for_special_event(xcb_connection_t *c,
+         if(!_xcb_conn_wait(c, &se->special_event_cond, 0, 0))
+             break;
+ 
++    _xcb_in_wake_up_next_reader(c);
+     pthread_mutex_unlock(&c->iolock);
+     return event;
+ }
+@@ -889,7 +890,14 @@ void _xcb_in_wake_up_next_reader(xcb_connection_t *c)
+     if(c->in.readers)
+         pthreadret = pthread_cond_signal(c->in.readers->data);
+     else
++    {
++        xcb_special_event_t *se;
++
+         pthreadret = pthread_cond_signal(&c->in.event_cond);
++        for (se = c->in.special_events; se; se = se->next) {
++             pthreadret = pthread_cond_signal(&se->special_event_cond);
++	}
++    }
+     assert(pthreadret == 0);
+ }
+ 
