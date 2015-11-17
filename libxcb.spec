@@ -1,15 +1,14 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.10
-Release:	4.1
+Version:	1.11.1
+Release:	0.1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
-Patch0:		0001-XCB-special-event-wakeup-fixes.patch
+#Patch0:		0001-XCB-special-event-wakeup-fixes.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-BuildRequires:	python-celementtree
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(libexslt)
 BuildRequires:	pkgconfig(libxslt)
@@ -19,7 +18,8 @@ BuildRequires:	pkgconfig(xcb-proto)
 BuildRequires:	pkgconfig(xdmcp)
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xi)
-BuildRequires:	pkgconfig(xkbcomp) pkgconfig(xkbfile)
+BuildRequires:	pkgconfig(xkbcomp)
+BuildRequires:	pkgconfig(xkbfile)
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
