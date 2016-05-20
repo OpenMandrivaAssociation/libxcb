@@ -7,6 +7,7 @@ License:	MIT
 Url:		http://xcb.freedesktop.org
 Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
 #Patch0:		0001-XCB-special-event-wakeup-fixes.patch
+# (tpg) https://bugs.freedesktop.org/show_bug.cgi?id=95490
 Patch1:		libxcb-1.12-fix-indentation.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
