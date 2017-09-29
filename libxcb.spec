@@ -429,7 +429,7 @@ This package provides bindings for the xvmc extension.
 	--enable-xinput \
 	--enable-dri3 \
 	--enable-xevie \
-	--disable-xprint \
+	--enable-xprint \
 	--disable-static
 
 %make
