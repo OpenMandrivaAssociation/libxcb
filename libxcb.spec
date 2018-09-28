@@ -1,6 +1,6 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.13
+Version:	1.13.1
 Release:	1
 Group:		System/X11
 License:	MIT
@@ -418,8 +418,7 @@ This package provides bindings for the xvmc extension.
 %{_libdir}/libxcb-xvmc.so.%{xvmcmajor}*
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %configure \
@@ -429,7 +428,7 @@ This package provides bindings for the xvmc extension.
 	--enable-xprint \
 	--disable-static
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
