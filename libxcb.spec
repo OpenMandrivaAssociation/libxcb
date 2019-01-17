@@ -1,3 +1,5 @@
+%global optflags %{optflags} -O3
+
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.13.1
