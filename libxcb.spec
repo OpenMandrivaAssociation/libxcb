@@ -1,7 +1,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.13.1
-Release:	2
+Release:	3
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -426,7 +426,8 @@ This package provides bindings for the xvmc extension.
 	--enable-dri3 \
 	--enable-xevie \
 	--enable-xprint \
-	--disable-static
+	--disable-static \
+	--with-queue-size=32768
 
 %make_build
 
