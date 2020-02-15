@@ -140,7 +140,7 @@ Development files for %{name}.
 %{_libdir}/libxcb*.so
 %{_libdir}/pkgconfig/xcb*.pc
 %{_docdir}/libxcb
-%{_mandir}/man3/*.xz
+%{_mandir}/man3/*.*
 
 %package -n %{libxcb_composite}
 Summary:	X protocol C-language Binding Library (composite extension)
