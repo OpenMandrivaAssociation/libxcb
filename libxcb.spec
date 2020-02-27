@@ -2,12 +2,12 @@
 
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.13.1
-Release:	3
+Version:	1.14
+Release:	1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
-Source0:	http://xcb.freedesktop.org/dist/libxcb-%{version}.tar.bz2
+Source0:	https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	xsltproc
