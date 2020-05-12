@@ -180,8 +180,7 @@ Requires:	%{libxcb_xv} = %{EVRD}
 Requires:	%{libxcb_xvmc} = %{EVRD}
 Requires:	%{libxcb_xinput} = %{EVRD}
 Requires:	%{libxcb_xkb} = %{EVRD}
-Obsoletes: 	libpthread-stubs-devel%{_isa} < %{EVRD}
-Provides: 	libpthread-stubs-devel%{_isa} = %{EVRD}
+%rename 	libpthread-stubs-devel
 
 %description -n %{devname}
 Development files for %{name}.
@@ -512,8 +511,6 @@ Requires:	%{lib32xcb_xv} = %{EVRD}
 Requires:	%{lib32xcb_xvmc} = %{EVRD}
 Requires:	%{lib32xcb_xinput} = %{EVRD}
 Requires:	%{lib32xcb_xkb} = %{EVRD}
-Obsoletes: 	libpthread-stubs-devel%{x86-32} < %{EVRD}
-Provides: 	libpthread-stubs-devel%{x86-32} = %{EVRD}
 
 %description -n %{dev32name}
 Development files for %{name}.
