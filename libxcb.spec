@@ -14,11 +14,16 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.14
-Release:	2
+Release:	3
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
 Source0:	https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
+# This is stolen straight from the pthread-stubs source:
+# http://cgit.freedesktop.org/xcb/pthread-stubs/blob/?id=6900598192bacf5fd9a34619b11328f746a5956d
+# we don't need the library because glibc has working pthreads, but we need
+# the pkgconfig file so libs that link against libxcb know this...
+Source1:	pthread-stubs.pc.in
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	xsltproc
@@ -37,6 +42,7 @@ BuildRequires:	devel(libexslt)
 BuildRequires:	devel(libXau)
 BuildRequires:	devel(libXdmcp)
 %endif
+%rename		libpthread-stubs
 
 %description
 the X protocol C-language Binding (XCB) is a replacement for Xlib  featuring
@@ -174,6 +180,7 @@ Requires:	%{libxcb_xv} = %{EVRD}
 Requires:	%{libxcb_xvmc} = %{EVRD}
 Requires:	%{libxcb_xinput} = %{EVRD}
 Requires:	%{libxcb_xkb} = %{EVRD}
+%rename 	libpthread-stubs-devel%{_isa}
 
 %description -n %{devname}
 Development files for %{name}.
@@ -181,7 +188,7 @@ Development files for %{name}.
 %files -n %{devname}
 %{_includedir}/xcb/*.h
 %{_libdir}/libxcb*.so
-%{_libdir}/pkgconfig/xcb*.pc
+%{_libdir}/pkgconfig/*.pc
 %{_docdir}/libxcb
 %{_mandir}/man3/*.*
 
@@ -504,13 +511,14 @@ Requires:	%{lib32xcb_xv} = %{EVRD}
 Requires:	%{lib32xcb_xvmc} = %{EVRD}
 Requires:	%{lib32xcb_xinput} = %{EVRD}
 Requires:	%{lib32xcb_xkb} = %{EVRD}
+%rename 	libpthread-stubs-devel%{_isa}
 
 %description -n %{dev32name}
 Development files for %{name}.
 
 %files -n %{dev32name}
 %{_prefix}/lib/libxcb*.so
-%{_prefix}/lib/pkgconfig/xcb*.pc
+%{_prefix}/lib/pkgconfig/*.pc
 
 %package -n %{lib32xcb_composite}
 Summary:	X protocol C-language Binding Library (composite extension) (32-bit)
@@ -766,7 +774,11 @@ This package provides bindings for the xvmc extension.
 %prep
 %autosetup -p1
 
-export CONFIGURE_TOP="`pwd`"
+sed -i 's/pthread-stubs //' configure.ac
+# autoreconf -f needed to expunge rpaths
+autoreconf -v -f --install
+
+export CONFIGURE_TOP="$(pwd)"
 
 %if %{with compat32}
 mkdir build32
@@ -777,6 +789,11 @@ cd build32
 	--enable-xevie \
 	--enable-xprint \
 	--with-queue-size=32768
+
+# Remove rpath from libtool (extra insurance if autoreconf is ever dropped)
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+
 cd ..
 %endif
 
@@ -790,6 +807,11 @@ LDFLAGS="%{ldflags} -flto" \
 	--enable-xevie \
 	--enable-xprint \
 	--with-queue-size=32768
+
+# Remove rpath from libtool (extra insurance if autoreconf is ever dropped)
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+
 cd ..
 
 %build
@@ -801,5 +823,7 @@ cd ..
 %install
 %if %{with compat32}
 %make_install -C build32
+sed 's,@libdir@,%{_prefix}/lib,;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_prefix},' %{SOURCE1} > %{buildroot}%{_prefix}/lib/pkgconfig/pthread-stubs.pc
 %endif
 %make_install -C build
+sed 's,@libdir@,%{_libdir},;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_prefix},' %{SOURCE1} > %{buildroot}%{_libdir}/pkgconfig/pthread-stubs.pc
