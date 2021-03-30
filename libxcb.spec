@@ -14,7 +14,7 @@
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
 Version:	1.14
-Release:	3
+Release:	4
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -189,7 +189,6 @@ Development files for %{name}.
 %{_includedir}/xcb/*.h
 %{_libdir}/libxcb*.so
 %{_libdir}/pkgconfig/*.pc
-%{_docdir}/libxcb
 %{_mandir}/man3/*.*
 
 %package -n %{libxcb_composite}
@@ -826,3 +825,6 @@ sed 's,@libdir@,%{_prefix}/lib,;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_p
 %endif
 %make_install -C build
 sed 's,@libdir@,%{_libdir},;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_prefix},' %{SOURCE1} > %{buildroot}%{_libdir}/pkgconfig/pthread-stubs.pc
+
+# (tpg) get rid of it, as it takes lot of place
+rm -rf %{buildroot}%{_docdir}/libxcb
