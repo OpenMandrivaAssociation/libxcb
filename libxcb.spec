@@ -13,8 +13,8 @@
 
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.14
-Release:	4
+Version:	1.15
+Release:	1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -189,7 +189,7 @@ Development files for %{name}.
 %{_includedir}/xcb/*.h
 %{_libdir}/libxcb*.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*.*
+%doc %{_mandir}/man3/*.*
 
 %package -n %{libxcb_composite}
 Summary:	X protocol C-language Binding Library (composite extension)
@@ -798,7 +798,7 @@ cd ..
 mkdir build
 cd build
 CFLAGS="%{optflags} -flto" \
-LDFLAGS="%{ldflags} -flto" \
+LDFLAGS="%{build_ldflags} -flto" \
 %configure \
 	--enable-xinput \
 	--enable-dri3 \
