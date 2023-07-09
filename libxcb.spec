@@ -2,6 +2,12 @@
 # because we add -flto manually for the 64bit build
 %global _disable_lto 1
 
+# Workaround for ****ing libtool adding -L/usr/lib64
+# while relinking during make install
+%if %{cross_compiling}
+%define prefer_gcc 1
+%endif
+
 %global optflags %{optflags} -O3
 
 # libxcb is used by wine and steam
