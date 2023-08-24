@@ -19,8 +19,8 @@
 
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.15
-Release:	2
+Version:	1.16
+Release:	1
 Group:		System/X11
 License:	MIT
 Url:		http://xcb.freedesktop.org
@@ -63,6 +63,7 @@ threading support, and extensibility.
 
 %define compositemajor 0
 %define damagemajor 0
+%define dbemajor 0
 %define dpmsmajor 0
 %define dri2major 0
 %define dri3major 0
@@ -89,6 +90,7 @@ threading support, and extensibility.
 
 %define libxcb_composite   %mklibname xcb-composite   %{compositemajor}
 %define libxcb_damage      %mklibname xcb-damage      %{damagemajor}
+%define libxcb_dbe         %mklibname xcb-dbe         %{dbemajor}
 %define libxcb_dpms        %mklibname xcb-dpms        %{dpmsmajor}
 %define libxcb_dri2        %mklibname xcb-dri2_       %{dri2major}
 %define libxcb_dri3        %mklibname xcb-dri3_       %{dri3major}
@@ -119,6 +121,7 @@ threading support, and extensibility.
 # 32-bit
 %define lib32xcb_composite   libxcb-composite%{compositemajor}
 %define lib32xcb_damage      libxcb-damage%{damagemajor}
+%define lib32xcb_dbe         libxcb-dbe%{dbemajor}
 %define lib32xcb_dpms        libxcb-dpms%{dpmsmajor}
 %define lib32xcb_dri2        libxcb-dri2_%{dri2major}
 %define lib32xcb_dri3        libxcb-dri3_%{dri3major}
@@ -163,6 +166,7 @@ Provides:	xcb-devel = %{EVRD}
 Requires:	%{libxcb} = %{EVRD}
 Requires:	%{libxcb_composite} = %{EVRD}
 Requires:	%{libxcb_damage} = %{EVRD}
+Requires:	%{libxcb_dbe} = %{EVRD}
 Requires:	%{libxcb_dpms} = %{EVRD}
 Requires:	%{libxcb_dri2} = %{EVRD}
 Requires:	%{libxcb_dri3} = %{EVRD}
@@ -218,6 +222,17 @@ This package provides bindings for the damage extension.
 
 %files -n %{libxcb_damage}
 %{_libdir}/libxcb-damage.so.%{damagemajor}*
+
+%package -n %{libxcb_dbe}
+Summary:	X protocol C-language Binding Library (dbe extension)
+Group:		System/X11
+Conflicts:	%{libxcb} <= 1.3-1
+
+%description -n %{libxcb_dbe}
+This package provides bindings for the dbe extension.
+
+%files -n %{libxcb_dbe}
+%{_libdir}/libxcb-dbe.so.%{dbemajor}*
 
 %package -n %{libxcb_dpms}
 Summary:	X protocol C-language Binding Library (dpms extension)
@@ -493,6 +508,7 @@ Group:		Development/X11
 Requires:	%{lib32xcb} = %{EVRD}
 Requires:	%{lib32xcb_composite} = %{EVRD}
 Requires:	%{lib32xcb_damage} = %{EVRD}
+Requires:	%{lib32xcb_dbe} = %{EVRD}
 Requires:	%{lib32xcb_dpms} = %{EVRD}
 Requires:	%{lib32xcb_dri2} = %{EVRD}
 Requires:	%{lib32xcb_dri3} = %{EVRD}
@@ -543,6 +559,16 @@ This package provides bindings for the damage extension.
 
 %files -n %{lib32xcb_damage}
 %{_prefix}/lib/libxcb-damage.so.%{damagemajor}*
+
+%package -n %{lib32xcb_dbe}
+Summary:	X protocol C-language Binding Library (dbe extension) (32-bit)
+Group:		System/X11
+
+%description -n %{lib32xcb_dbe}
+This package provides bindings for the dbe extension.
+
+%files -n %{lib32xcb_dbe}
+%{_prefix}/lib/libxcb-dbe.so.%{dbemajor}*
 
 %package -n %{lib32xcb_dpms}
 Summary:	X protocol C-language Binding Library (dpms extension) (32-bit)
