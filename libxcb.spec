@@ -19,11 +19,11 @@
 
 Summary:	X protocol C-language Binding Library
 Name:		libxcb
-Version:	1.16.1
+Version:	1.17.0
 Release:	1
 Group:		System/X11
 License:	MIT
-Url:		http://xcb.freedesktop.org
+Url:		https://xcb.freedesktop.org
 Source0:	https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 # This is stolen straight from the pthread-stubs source:
 # http://cgit.freedesktop.org/xcb/pthread-stubs/blob/?id=6900598192bacf5fd9a34619b11328f746a5956d
