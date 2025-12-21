@@ -30,6 +30,11 @@ Source0:	https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.
 # we don't need the library because glibc has working pthreads, but we need
 # the pkgconfig file so libs that link against libxcb know this...
 Source1:	pthread-stubs.pc.in
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	graphviz
 BuildRequires:	xsltproc
