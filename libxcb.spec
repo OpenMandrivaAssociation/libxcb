@@ -32,8 +32,8 @@ Source0:	https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.
 Source1:	pthread-stubs.pc.in
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool-base
 BuildRequires:	slibtool
+BuildRequires:	pkgconfig(sltdl)
 BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -824,11 +824,6 @@ cd build32
 	--enable-xevie \
 	--enable-xprint \
 	--with-queue-size=32768
-
-# Remove rpath from libtool (extra insurance if autoreconf is ever dropped)
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-
 cd ..
 %endif
 
@@ -842,11 +837,6 @@ LDFLAGS="%{build_ldflags} -flto" \
 	--enable-xevie \
 	--enable-xprint \
 	--with-queue-size=32768
-
-# Remove rpath from libtool (extra insurance if autoreconf is ever dropped)
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-
 cd ..
 
 %build
@@ -863,5 +853,5 @@ sed 's,@libdir@,%{_prefix}/lib,;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_p
 %make_install -C build
 sed 's,@libdir@,%{_libdir},;s,@prefix@,%{_prefix},;s,@exec_prefix@,%{_exec_prefix},' %{SOURCE1} > %{buildroot}%{_libdir}/pkgconfig/pthread-stubs.pc
 
-# (tpg) get rid of it, as it takes lot of place
+# (tpg) get rid of it, as it takes lot of space
 rm -rf %{buildroot}%{_docdir}/libxcb
